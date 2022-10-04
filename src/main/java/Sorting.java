@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Sorting {
     public static int[] sorting3(int[] input) {
@@ -72,5 +73,16 @@ public class Sorting {
         }
 
         return answer;
+    }
+
+    public static String sorting7(int[][] input) {
+        Arrays.sort(input, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                if(o1[0] == o2[0]) return o1[1] - o2[1];
+                else return o1[0] - o2[0];
+            }
+        });
+        return Arrays.deepToString(input);
     }
 }
