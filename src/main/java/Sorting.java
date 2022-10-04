@@ -56,4 +56,21 @@ public class Sorting {
         }
         return answer;
     }
+
+    public static String sorting6(int[] input) {
+        String answer = "";
+        int[] tmp = new int[input.length];
+        for(int i = 0; i < input.length; i++) {
+            tmp[i] = input[i];
+        }
+        Arrays.sort(tmp);
+
+        for(int i = 0; i < input.length; i++) {
+            if(tmp[i] != input[i]) {
+                answer += (i+1) + ",";
+            }
+        }
+
+        return answer;
+    }
 }
