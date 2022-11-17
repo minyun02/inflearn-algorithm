@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Recursive {
     public static void recursive1(int n) {
@@ -40,6 +41,19 @@ public class Recursive {
             level++;
         }
         return 0;
+    }
+
+    public static void findMaxSum(int level, int sum, int time, int[] ps, int[] pt){
+        int m = AlgorithmMain.m;
+        int n = AlgorithmMain.n;
+
+        if(time > m) return; //지금까지 선택한 문제들을 푸는데 걸리는 시간이 제한 시간m보다 크면 끝
+        if(level == n) {//
+            AlgorithmMain.answer = Math.max(AlgorithmMain.answer, sum);
+        } else {
+            findMaxSum(level + 1, sum+ps[level], time + pt[level], ps, pt);
+            findMaxSum(level + 1, sum, time, ps, pt);
+        }
     }
 }
 
