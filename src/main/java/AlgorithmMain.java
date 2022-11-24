@@ -3,18 +3,22 @@ import java.util.Scanner;
 
 public class AlgorithmMain {
     Node root;
-    static int answer = Integer.MIN_VALUE, n, m;
+//    static int answer = Integer.MIN_VALUE, n, m;
+    //섬나라 아일랜드
+    static int answer = 0, n;
+    static int[] dx = {-1, -1, 0, 1, 1, 1, 0, -1};
+    static int[] dy = {0, 1, 1, 1, 0, -1, -1, -1};
     public static void main(String[] args) {
         System.out.println("시작!");
-        Scanner kb = new Scanner(System.in);
-        n = kb.nextInt();
-        m = kb.nextInt();
-        int[] a = new int[n];
-        int[] b = new int[n];
-        for(int i = 0; i < n; i++){
-            a[i] = kb.nextInt();
-            b[i] = kb.nextInt();
-        }
+//        Scanner kb = new Scanner(System.in);
+//        n = kb.nextInt();
+//        m = kb.nextInt();
+//        int[] a = new int[n];
+//        int[] b = new int[n];
+//        for(int i = 0; i < n; i++){
+//            a[i] = kb.nextInt();
+//            b[i] = kb.nextInt();
+//        }
 //        System.out.println(Arrays.toString(Sorting.sorting3(new int[] {11, 7, 5, 6, 10, 9})));
 //        System.out.println(Arrays.toString(Sorting.sorting4(5, new int[] {1,2,3,2,6,2,3,5,7})));
 //        System.out.println(Sorting.sorting5(new int[] {20,25,52,30,39,33,43,33}));
@@ -37,8 +41,8 @@ public class AlgorithmMain {
 //        System.out.println(Recursive.recursive10(tree.root));
 
         //최대점수 구하기
-        Recursive.findMaxSum(0, 0, 0, a, b);
-        System.out.println(answer);
+//        Recursive.findMaxSum(0, 0, 0, a, b);
+//        System.out.println(answer);
 //        5
 //        20
 //        10
@@ -51,5 +55,24 @@ public class AlgorithmMain {
 //        3
 //        7
 //        4
+
+        //섬나라 아일랜드 DFS
+//        n = kb.nextInt();
+//        int[][] arr = new int[n][n];
+        n = 7;
+        int[][] arr = {{1, 1, 0, 0, 0, 1, 0},
+                {0, 1, 1, 0, 1, 1, 0},
+                {0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 1, 0, 1, 1},
+                {1, 1, 0, 1, 1, 0, 0},
+                {1, 0, 0, 0, 1, 0, 0},
+                {1, 0, 1, 0, 1, 0, 0}};
+//        for(int i = 0; i < n; i++) {
+//            for(int j = 0; j < n; j++) {
+//                arr[i][j] = kb.nextInt();
+//            }
+//        }
+        Recursive.findIsland(arr);
+        System.out.println(answer);
     }
 }
