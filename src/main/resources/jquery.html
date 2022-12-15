@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax 방식을 알아보자!</title>
+</head>
+<body>
+  <h1>ajax</h1>
+  <p>자바스크립트를 이용해 서버와 브라우저가 비동기 방식으로 데이터를 교환할 수 있는 통신 기능</p>
+  <p>브라우저가 가지고 있는 XMLHttpRequest 객체를 이용(제이쿼리)</p>
+
+  <h2>제이쿼리의 ajax 사용</h2>
+  <p>
+    제이쿼리를 사용하면 브라우저 간 호환성이 보장된다.<br>
+    $.ajax({<br>
+      url : url,<br>
+      type : 'GET',<br>
+      sucess : function onDate(data) {<br>
+        console.log(data)<br>
+      },<br>
+      error : function onError(error) {<br>
+        console.log(error);<br>
+      }<br>
+    });<br>
+  </p>
+<br><br>
+  <h2>XMLHttpRequest 미사용 방식</h2>
+  <h3>문제점</h3>
+  <p>1. 요청의 상태나 변경을 구독하려면 이벤트를 등록해서 변경사항을 받아야한다</p>
+  <p>2. 요청의 성공, 실패 여부나 상태에 따라 처리하는 로직이 들어가기 좋지 않다.</p>
+
+  <h3>fetch</h3>
+  <p>ES6(2015)부터 자바스크립트 내장 라이브러리로 들어왔다.</p>
+  <p>따라서 별더의 import가 없어도 사용이 가능하다.</p>
+  <p>다루기 쉽고 외부 라이브러리에 비해 안정적이다</p>
+  <p>하지만, IE는 지원하지 않는 버전이 있다</p>
+  <p>timeout 기능이 없어서 네트워크 에러시 기다려야한다....</p>
+  <p>JSON 데이터 사용시 변환해야한다.</p>
+  <p>
+  fetch('http://example.com/movies.json')<br>
+  .then(function(response) {<br>
+    return response.json();<br>
+  })<br>
+  .then(function(myJson) {<br>
+    console.log(JSON.stringify(myJson));<br>
+  });<br>
+  </p>
+<br><br>
+  <h3>axios</h3>
+  <p>
+    axios({<br>
+      method: 'post',<br>
+      url: '/user/12345',<br>
+      data: {<br>
+        name: 'noma',<br>
+        age: '24'<br>
+      }<br>
+    });<br>
+  </p>
+  <p>axios는 timeout 설정이 가능하다</p>
+  <p>요청 취소도 가능하다</p>
+  <p>JSON 데이터로 자동 변환이 가능하다</p>
+  <p>크로스 브라우징에 신경을 많이 쓴 방식이라 브라우저 호환성이 뛰어나다</p>
+  <p>외부 라이브러리니까 설치 필요</p>
+</body>
+</html>
